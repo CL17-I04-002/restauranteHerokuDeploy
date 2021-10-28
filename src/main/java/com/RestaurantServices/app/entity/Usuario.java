@@ -13,8 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.sun.istack.NotNull;
+
 @Entity
-@Table (name="usuario")
+@Table (name="usuarios")
 public class Usuario implements Serializable{
 
 	/**
@@ -24,12 +26,15 @@ public class Usuario implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(name = "username")
+	@Column(name = "username", length = 50)
+	@NotNull
 	private String username;
-	@Column(name = "password")
+	@Column(name = "password", length = 50)
+	@NotNull
 	private String password;
 	
 	@OneToOne(mappedBy = "usuario")
+	@NotNull
 	private Empleado empleado;
 	
 
@@ -44,7 +49,7 @@ public class Usuario implements Serializable{
 		
 	}
 	
-	public boolean Validar(String usen,String pass) 
+	/*public boolean Validar(String usen,String pass) 
 	{
 		if(this.password==pass && this.username==usen) {
 			return true;
@@ -52,7 +57,7 @@ public class Usuario implements Serializable{
 		else {
 			return false;
 		}
-	}
+	}*/
 
 	public long getId() {
 		return id;

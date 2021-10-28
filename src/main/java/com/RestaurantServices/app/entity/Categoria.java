@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.sun.istack.NotNull;
+import com.sun.istack.Nullable;
+
 @Entity
 @Table (name="categorias")
 public class Categoria implements Serializable {
@@ -21,10 +24,11 @@ public class Categoria implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(name = "Categoria", nullable = false)
+	@Column(name = "categoria", length = 30)
+	@NotNull
 	private String Categoria;
 	
-	@OneToOne(mappedBy = "categoria", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "categoria")
 	private Menu menu;
 	
 	

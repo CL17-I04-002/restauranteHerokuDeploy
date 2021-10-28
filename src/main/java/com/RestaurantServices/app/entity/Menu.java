@@ -4,6 +4,7 @@ package com.RestaurantServices.app.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -28,7 +29,7 @@ public class Menu implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(name = "nombre",length = 40, nullable = false)
+	@Column(name = "nombre",length = 50, nullable = false)
 	private String nombre;
 	///EAGER devuelve un objeto, mientras que LAZY puede devolver null
 		/*
@@ -37,8 +38,11 @@ public class Menu implements Serializable {
 		 existir una y solo una relación con la Entidad de destino, de esta forma,
 		 la entidad marcada como @OnoToOne deberá tener una referencia a la Entidad destino 
 		 */
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="categoria", referencedColumnName = "id", nullable = false)
+	/*
+	 En una relacion one to one debe ser la dueña una entidad, en este caso menu es dueño de catogria
+	 */
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name="categorias", referencedColumnName = "id", nullable = false)
 	private Categoria categoria;
 	@Column(name = "descripcion",length = 60)
 	private String descripcion;

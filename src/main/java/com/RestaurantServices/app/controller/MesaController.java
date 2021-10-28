@@ -57,7 +57,7 @@ public class MesaController {
 		
 		if(oMesa.isPresent()) 
 		{
-			oMesa.get().setCodigo(mesaDetails.getCodigo());
+			oMesa.get().setId(mesaDetails.getId());
 			return ResponseEntity.status(HttpStatus.CREATED).body(mesainterface.Save(oMesa.get()));
 		}
 		else {
