@@ -14,8 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.sun.istack.NotNull;
-
 @Entity
 @Table (name="empleados")
 public class Empleado implements Serializable {
@@ -24,24 +22,18 @@ public class Empleado implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(name = "nombres", length = 50)
-	@NotNull
+	@Column(name = "nombres", length = 50, nullable = false)
 	private String nombres;
-	@Column(name = "apellidos", length = 50)
-	@NotNull
+	@Column(name = "apellidos", length = 50, nullable = false)
 	private String apellidos;
-	@Column(name = "direccion", length = 80)
-	@NotNull
+	@Column(name = "direccion", length = 80, nullable = false)
 	private String direccion;
-	@Column(name = "DUI", length = 15)
-	@NotNull
+	@Column(name = "DUI", length = 15, nullable = false)
 	private String DUI;
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name="usuario", referencedColumnName = "id")
-	@NotNull
+	@JoinColumn(name="usuario", referencedColumnName = "id", nullable = false)
 	private Usuario usuario;
-	@Column(name = "telefono", length = 20)
-	@NotNull
+	@Column(name = "telefono", length = 20, nullable = false)
 	private String telefono;
 
 	public Empleado() {

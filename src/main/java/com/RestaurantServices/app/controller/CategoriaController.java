@@ -33,7 +33,6 @@ public class CategoriaController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(categoriaInterface.Save(categ));
 	}
 	
-
 	@GetMapping("/{id}")
 	public ResponseEntity<?> read(@PathVariable(value="id")  Long id)
 	{

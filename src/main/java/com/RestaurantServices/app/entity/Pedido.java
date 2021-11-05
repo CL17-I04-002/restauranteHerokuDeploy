@@ -51,12 +51,15 @@ public class Pedido implements Serializable{
 	@Column(name = "estado", length = 25, nullable = false)
 	@Enumerated(value = EnumType.STRING)
 	private Estado estado;
+	
+	@Column(name = "cliente", length = 30, nullable = false)
+	private String cliente;
 
 	public Pedido() {
 		super();
 	}
 
-	public Pedido(long id, Empleado empleado, Mesa mesa, Date fecha_pedido, String observacion, Estado estado) {
+	public Pedido(long id, Empleado empleado, Mesa mesa, Date fecha_pedido, String observacion, Estado estado, String cliente) {
 		super();
 		this.id = id;
 		this.empleado = empleado;
@@ -64,8 +67,9 @@ public class Pedido implements Serializable{
 		Fecha_pedido = fecha_pedido;
 		this.observacion = observacion;
 		this.estado = estado;
+		this.cliente = cliente;
 	}
-	
+
 	public long getId() {
 		return id;
 	}
@@ -114,4 +118,11 @@ public class Pedido implements Serializable{
 		this.estado = estado;
 	}
 	
+	public String getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(String cliente) {
+		this.cliente = cliente;
+	}
 }

@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.sun.istack.NotNull;
 
 @Entity
 @Table (name="usuarios")
@@ -26,15 +25,12 @@ public class Usuario implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(name = "username", length = 50)
-	@NotNull
+	@Column(name = "username", length = 50, nullable = false)
 	private String username;
-	@Column(name = "password", length = 50)
-	@NotNull
+	@Column(name = "password", length = 50, nullable = false)
 	private String password;
 	
 	@OneToOne(mappedBy = "usuario")
-	@NotNull
 	private Empleado empleado;
 	
 

@@ -34,8 +34,6 @@ public class UsuarioController {
 	public ResponseEntity<?> create (@RequestBody Usuario usuario){
 		return ResponseEntity.status(HttpStatus.CREATED).body(mesainterface.Save(usuario));
 	}
-	
-	
 	@GetMapping("/{id}")
 	public ResponseEntity<?> read(@PathVariable(value="id")  Long id)
 	{

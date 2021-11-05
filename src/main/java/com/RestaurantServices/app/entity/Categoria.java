@@ -24,13 +24,10 @@ public class Categoria implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	@Column(name = "categoria", length = 30)
-	@NotNull
+	@Column(name = "categoria", length = 30, nullable = false)
 	private String Categoria;
-	
 	@OneToOne(mappedBy = "categoria")
 	private Menu menu;
-	
 	
 	public Categoria() {
 		super();
